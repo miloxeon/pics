@@ -1,2 +1,2 @@
 # pics
-Simple photohosting Django project. Built for educational purposes.
+Simple nodeJS photohosting project. Built for educational purposes.
