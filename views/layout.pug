@@ -1,0 +1,36 @@
+doctype html
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet', href='views/css/normalize.css')
+		link(rel='stylesheet', href='views/css/font-awesome.min.css')
+		link(rel='stylesheet', href='views/stylus/style.css')
+		title Все картинки — Pics
+	body.page-body
+		header.page-header
+			.container.container--spread
+				unless not_home
+					a.link-to-main
+						section.logo
+							| Pics
+				else
+					a.link-to-main(href='/')
+						section.logo
+							| Pics
+				form.search
+					label.search__label(for='search') Поиск картинок:
+					input.search__field(type='text', name='search', placeholder='Введите теги')
+					button.search__button(type='submit') Искать
+				section.user
+					a.user__link(href='#')
+						img.user__avatar(src='https://placehold.it/50x50', width='50', height='50')
+		main.page-main
+			.container.pics
+				block content
+		footer.page-footer
+			.container.container--spread
+				section.logo.logo--footer
+					| Pics
+				small.copyright
+					| © Voloskov Miloslav, 2016
