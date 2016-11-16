@@ -1,0 +1,18 @@
+extends ./layout
+block content
+	each photo in data
+		article.picture
+			.picture__wrapper
+				img.picture__preview(src= photo.preview, width='800', height='480', alt= photo.title)
+			section.picture__info
+				h2.picture__title= photo.title
+				a.picture__link(href= photo.link) Скачать
+			footer.picture__footer
+				ul.picture__tags
+					each tag in photo.tags
+						li.picture__tag
+							a.tag-link(href='#')= tag
+				section.picture__likes
+					span.picture__likes-count 340
+					button.picture__like(type='button')
+						i.fa.fa-heart-o(aria-hidden='true')
