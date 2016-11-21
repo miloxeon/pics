@@ -6,13 +6,28 @@ var db = require('./database/database');
 
 var check_if_home = function(address) {
 	return (address === '/' || address === '/index.html') ? true : false;
-}
+};
 
-var take_care = function(address, view, promise) {
+var get = function (address, view, promise) {
 	promise = promise ? promise : new Promise(function(res, rej) { res({}); });
 	app.get(address, function(req, res) {
-		promise.then(function(data) {
-			res.render(view, {'data': data});
+		promise.then(function (data) {
+			res.render(view, {'data': data, 'not_home': !check_if_home(address)});
+		});
+	});
+};
+
+
+var post = function (address, view, promise, todo) {
+	promise = promise ? promise : new Promise(function(res, rej) { res({}); });
+	app.post(address, function(req, res) {
+		new Promise(function (resolve, reject) {
+			todo(req, res);
+			resolve();
+		}).then(function () {
+			promise.then(function (data) {
+				res.render(view, {'data': data, 'not_home': !check_if_home(address)});
+			});
 		});
 	});
 };
@@ -39,7 +54,16 @@ var take_care = function(address, view, promise) {
 // 	res.render('./404', {"not_home": true})
 // });
 
-take_care('/', './index', db.get_photos_by_page());
-take_care('/index.html', './index');
-take_care('*', './404');
-// take_care('*', './index', db.get_user('sample1@example.com'));
+get('/', './index', db.get_photos_by_page());
+get('/index.html', './index');
+get('/add-image', './add-image');
+post('/', './index', db.get_photos_by_page(), function (req, res) {
+	db.add_photo(new db.photo({
+		title: req.body.title,
+		tags: [req.body.tags],
+		link: req.body.link,
+		preview: req.body.link
+	}));
+});
+
+get('*', './404');

@@ -18,11 +18,13 @@ html(lang='ru')
 					a.link-to-main(href='/')
 						section.logo
 							| Pics
-				form.search
+				form.search(action='#', method='get')
 					label.search__label(for='search') Поиск картинок:
-					input.search__field(type='text', name='search', placeholder='Введите теги')
-					button.search__button(type='submit') Искать
+					input.field.search__field(type='text', name='search', placeholder='Введите теги')
+					button.button.search__button(type='submit') Искать
 				section.user
+					a.user__link.add-image(href='add-image')
+						| +
 					a.user__link(href='#')
 						img.user__avatar(src='https://placehold.it/50x50', width='50', height='50')
 		main.page-main

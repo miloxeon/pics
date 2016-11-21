@@ -2,7 +2,8 @@
 
 var http = require('http'),
 	express = require('express'),
-	stylus = require('stylus');
+	stylus = require('stylus'),
+	bodyParser = require('body-parser');
 
 var app = express();
 module.exports = app;
@@ -20,3 +21,8 @@ app.use(stylus.middleware({
 }));
 
 app.use(express.static('./'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));

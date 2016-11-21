@@ -40,6 +40,10 @@ var photo_schema = mongoose.Schema({
 	preview: {
 		type: String,
 		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
 	}
 });
 

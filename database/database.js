@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/pics');
+mongoose.connect('mongodb://127.0.0.1:27017/pics');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -57,7 +57,7 @@ function get_photos_by_page(page, photos_per_page) {
 	photos_per_page = photos_per_page ? photos_per_page : 15;
 	return photo.find({}, function (err, photo, affected) {
 		if (err) throw err;
-	});
+	}).sort('-date');
 }
 
 function toggle_like_photo(photo_id, login) {}

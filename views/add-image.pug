@@ -1,0 +1,12 @@
+extends ./layout
+block content
+	form.upload.preview-container(action='/', method='post')
+		div.preview.picture__wrapper
+			span.preview__placeholder
+				| Загрузите картинку, чтобы посмотреть, как все выглядит
+
+		input.field(type='text', name='title', placeholder='Введите имя' required)
+		input.field(type='text', name='link', placeholder='Введите ссылку' required)
+		input.field(type='text', name='tags', placeholder='Введите теги, через запятую' required)
+		button.button(type='submit')
+			| Загрузить

@@ -2,6 +2,9 @@
 html
 	min-height 100%
 
+.hide
+	display none
+
 .page-body
 	width 100%
 	min-height 100vh
@@ -81,31 +84,36 @@ html
 	line-height 1
 	font-style normal
 
-.search__field
-	margin-left 10px
-	margin-right 0
+.field
 	padding 5px
 	background-color white
 	border none
 	border-radius 5px
-	border-top-right-radius 0
-	border-bottom-right-radius 0
 	box-shadow 0 1px 6px rgba(0, 0, 0, .16)
 
-.search__button
-	margin-left 0
+.search__field
+	margin-left 10px
+	margin-right 0
+	border-top-right-radius 0
+	border-bottom-right-radius 0
+
+.button
 	padding 6px 10px
 	color white
 	background-color #43cea2
 	border none
 	border-radius 5px
-	border-top-left-radius 0
-	border-bottom-left-radius 0
 	box-shadow 0 1px 6px rgba(0, 0, 0, .16)
 	cursor pointer
 	transition background-color .2s
 	&:hover
 		background-color #185a9d
+
+.search__button
+	margin-left 0
+	border-radius 5px
+	border-top-left-radius 0
+	border-bottom-left-radius 0
 
 .logo--footer
 	background-image url(../img/logo-faded.png)
@@ -118,11 +126,25 @@ html
 	line-height 1
 	font-style normal
 
+.user
+	display flex
+	align-items center
+
 .user__link
 	display flex
 	justify-content space-between
 	align-items center
+	margin-right 10px
 	text-decoration none
+
+.user__link:last-child
+	margin-right 0
+
+.add-image
+	display inline-block
+	font-size 40px
+	line-height 1
+	color #43cea2
 
 .user__avatar
 	width 50px
@@ -231,6 +253,26 @@ html
 .link-to-main
 	text-decoration none
 
+.preview 
+	display flex
+	align-items center
+	justify-content center
+
+.preview__placeholder
+	display inline-block
+	height 100%
+
+.preview-container
+	width 60%
+	margin 0 auto
+	margin-top 6vh
+	display flex
+	flex-direction column
+
+.preview-container > .field,
+.preview-container > .button
+	margin-top 20px
+
 @media screen and (max-width: 1022px)
 	.container
 		width 90%
@@ -248,7 +290,7 @@ html
 	.container--spread
 		justify-content space-around
 		align-content space-between
-	.search__button
+	.button
 		transition none
 		&:hover
 			background-color #43cea2
