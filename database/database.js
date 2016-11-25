@@ -3,10 +3,11 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/pics');
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {
 	console.log("We are connected!");
 });
+
 
 var models = require('./models');
 
@@ -50,8 +51,6 @@ function delete_photo(id) {
 	}).then();
 }
 
-function search(tags) {}
-
 function get_photos_by_page(page, photos_per_page) {
 	page = page ? page : 1;
 	photos_per_page = photos_per_page ? photos_per_page : 15;
@@ -62,6 +61,14 @@ function get_photos_by_page(page, photos_per_page) {
 
 function toggle_like_photo(photo_id, login) {}
 
+function search(tag) {
+	var query = photo.find({});
+	query.where('tags').in([tag]);
+	return query;
+	// return photo.find({tags}, function (err, photo, affected) {
+	// 	if (err) throw err;
+	// }).sort('-date');
+}
 
 
 

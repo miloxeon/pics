@@ -18,10 +18,16 @@ html(lang='ru')
 					a.link-to-main(href='/')
 						section.logo
 							| Pics
-				form.search(action='#', method='get')
-					label.search__label(for='search') Поиск картинок:
-					input.field.search__field(type='text', name='search', placeholder='Введите теги')
-					button.button.search__button(type='submit') Искать
+				if tag
+					form.search(action='index.html', method='get')
+						label.search__label(for='search') Поиск картинок:
+						input.field.search__field(type='text', name='tag', placeholder='Введите тег' value= tag)
+						button.button.search__button(type='submit') Искать
+				else
+					form.search(action='index.html', method='get')
+						label.search__label(for='search') Поиск картинок:
+						input.field.search__field(type='text', name='tag', placeholder='Введите тег')
+						button.button.search__button(type='submit') Искать
 				section.user
 					a.user__link.add-image(href='add-image')
 						| +

@@ -55,8 +55,25 @@ var post = function (address, view, promise, todo) {
 // });
 
 get('/', './index', db.get_photos_by_page());
-get('/index.html', './index');
+//get('/index.html', './index');
 get('/add-image', './add-image');
+
+app.get('/index.html', function (req, res) {
+	db.search(req.query.tag).exec(function(err, docs) {
+		res.render('./index', 
+			{
+				"data": docs, 
+				"not_home": true,
+				"tag": req.query.tag
+			});
+	});
+	
+});
+
+app.get('/register', function (req, res) {
+	res.render('./reg', {"not_home": true});
+});
+
 post('/', './index', db.get_photos_by_page(), function (req, res) {
 	db.add_photo(new db.photo({
 		title: req.body.title,

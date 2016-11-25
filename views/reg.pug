@@ -1,0 +1,11 @@
+extends ./layout
+block content
+	form.upload.preview-container(action='/', method='post')
+		input.field(type='email', name='login', placeholder='Введите адрес электронной почты' required)
+		input.field(type='password', name='password', placeholder='Введите пароль' required)
+		input.field(type='text', name='name', placeholder='Введите имя')
+		input.field(type='text', name='surname', placeholder='Введите фамилию')
+		input.field(type='text', name='phone', placeholder='Введите телефон')
+		textarea.field(name='about', placeholder='Расскажите нам немного о себе', style='resize: none;')
+		button.button(type='submit')
+			| Зарегистрироваться
