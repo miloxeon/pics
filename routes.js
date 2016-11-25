@@ -59,12 +59,12 @@ get('/', './index', db.get_photos_by_page());
 get('/add-image', './add-image');
 
 app.get('/index.html', function (req, res) {
-	db.search(req.query.tag).exec(function(err, docs) {
+	db.search(req.query.tag.toLowerCase()).exec(function(err, docs) {
 		res.render('./index', 
 			{
 				"data": docs, 
 				"not_home": true,
-				"tag": req.query.tag
+				"tag": req.query.tag.toLowerCase()
 			});
 	});
 	

@@ -11,7 +11,7 @@ block content
 				ul.picture__tags
 					each tag in photo.tags
 						li.picture__tag
-							a.tag-link(href='#')= tag
+							a.tag-link(href='index.html?tag=' + tag)= tag
 				section.picture__likes
 					span.picture__likes-count 340
 					button.picture__like(type='button')
