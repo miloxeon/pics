@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/pics');
+// mongoose.connect('mongodb://127.0.0.1:27017/pics');
+mongoose.connect('mongodb://root:1234@ds159767.mlab.com:59767/pics-db');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', function() {

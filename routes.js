@@ -60,14 +60,12 @@ get('/add-image', './add-image');
 
 app.get('/index.html', function (req, res) {
 	db.search(req.query.tag.toLowerCase()).exec(function(err, docs) {
-		res.render('./index', 
-			{
-				"data": docs, 
-				"not_home": true,
-				"tag": req.query.tag.toLowerCase()
-			});
-	});
-	
+		res.render('./index', {
+			"data": docs, 
+			"not_home": true,
+			"tag": req.query.tag.toLowerCase()
+		});
+	});	
 });
 
 app.get('/register', function (req, res) {
