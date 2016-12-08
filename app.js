@@ -9,7 +9,7 @@ var app = express();
 module.exports = app;
 
 
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 app.set('views', './views');
 app.set('view engine', 'pug');
 
