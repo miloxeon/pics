@@ -3,7 +3,8 @@
 var http = require('http'),
 	express = require('express'),
 	stylus = require('stylus'),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	session = require('express-session');
 
 var app = express();
 module.exports = app;
@@ -26,3 +27,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+// app.use(express.cookieDecoder());

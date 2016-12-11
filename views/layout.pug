@@ -29,10 +29,16 @@ html(lang='ru')
 						input.field.search__field(type='text', name='tag', placeholder='Введите тег')
 						button.button.search__button(type='submit') Искать
 				section.user
-					a.user__link.add-image(href='add-image')
-						| +
-					a.user__link(href='#')
-						img.user__avatar(src='https://placehold.it/50x50', width='50', height='50')
+					if authorized
+						a.user__link.add-image(href='add-image')
+							| +
+						a.user__link(href='#')
+							| #{name}
+						a.user__link(href='exit')
+							| Выход
+					else
+						a.user__link(href='register')
+							| Войти
 		main.page-main
 			.container.pics
 				block content

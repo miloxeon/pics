@@ -1,11 +1,23 @@
 extends ./layout
 block content
-	form.upload.preview-container(action='/', method='post')
+	input.hidden.hide-reg(type='radio', name="hide", id='reg' checked)
+	input.hidden.hide-login(type='radio', name="hide", id='login')
+	div.selectable
+		label.selectable__item(for='login')
+			| Регистрация
+		label.selectable__item(for='reg')
+			| Вход
+	form.upload.reg-form.preview-container(action='/register', method='post')
 		input.field(type='email', name='login', placeholder='Введите адрес электронной почты' required)
 		input.field(type='password', name='password', placeholder='Введите пароль' required)
 		input.field(type='text', name='name', placeholder='Введите имя')
 		input.field(type='text', name='surname', placeholder='Введите фамилию')
 		input.field(type='text', name='phone', placeholder='Введите телефон')
 		textarea.field(name='about', placeholder='Расскажите нам немного о себе', style='resize: none;')
-		button.button(type='submit')
+		button.button(type='submit', id='reg-button')
 			| Зарегистрироваться
+	form.upload.login-form.preview-container(action='/login', method='post')
+		input.field(type='email', name='login', placeholder='Введите адрес электронной почты' required)
+		input.field(type='password', name='password', placeholder='Введите пароль' required)
+		button.button(type='submit', id='login-button')
+			| Войти

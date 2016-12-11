@@ -273,6 +273,25 @@ html
 .preview-container > .button
 	margin-top 20px
 
+.hidden
+	display: none
+
+.hide-reg:checked ~ .reg-form
+	display:none
+
+.hide-login:checked ~ .login-form
+	display:none
+
+.selectable
+	display flex
+
+.selectable__item
+	padding 20px 10px
+	margin-right 20px
+
+.selectable__item:last-child
+	margin-right 0
+
 @media screen and (max-width: 1022px)
 	.container
 		width 90%

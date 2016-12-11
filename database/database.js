@@ -24,8 +24,21 @@ function get_user(login) {
 	});
 }
 
+function auth_user(login, password) {
+	user.findOne({login: login}, function (err, user) {
+		if (err) throw err;
+		if (user) {
+			if (user.password === password) {
+				return {"login": user.login, "name": user.name};
+			} else {
+				return false;
+			}
+		}
+	});
+}
+
 function add_user(user) {
-	user.save(function (err, user, affected) {
+	return user.save(function (err, user, affected) {
 		if (err) throw err;
 		console.log('User %s (%s %s) have been saved to database', user.login, user.name, user.surname);
 	});
@@ -36,7 +49,7 @@ function edit_user(login, new_user) {}
 function delete_user(login) {}
 
 function add_photo(photo) {
-	photo.save(function (err, photo, affected) {
+	return photo.save(function (err, photo, affected) {
 		if (err) throw err;
 		console.log('Photo "%s" have been saved to database.', photo.title);
 	});
@@ -79,6 +92,7 @@ module.exports.photo = photo;
 
 module.exports.get_user = get_user;
 module.exports.add_user = add_user;
+module.exports.auth_user = auth_user;
 module.exports.edit_user = edit_user;
 module.exports.delete_user = delete_user;
 module.exports.add_photo = add_photo;
@@ -90,6 +104,9 @@ module.exports.toggle_like_photo = toggle_like_photo;
 
 
 // ALERT!!!
-photo.remove({}, function () {
-	var createdb = require('./createdb');
-}).then();
+user.remove({}, function(){}).then(function() {
+	photo.remove({}, function () {
+		var createdb = require('./createdb');
+	}).then();
+});
+
