@@ -104,9 +104,9 @@ module.exports.toggle_like_photo = toggle_like_photo;
 
 
 // ALERT!!!
-user.remove({}, function(){}).then(function() {
-	photo.remove({}, function () {
-		var createdb = require('./createdb');
-	}).then();
-});
+// user.remove({}, function(){}).then(function() {
+// 	photo.remove({}, function () {
+// 		var createdb = require('./createdb');
+// 	}).then();
+// });
 
